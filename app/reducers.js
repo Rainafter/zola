@@ -8,6 +8,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 
 import globalReducer from 'containers/App/reducer';
 import loginReducer from 'containers/LoginPage/reducer';
+import userReducer from 'containers/UserPage/reducer';
 /*
  * routeReducer
  *
@@ -44,6 +45,7 @@ export default function createReducer(injectedReducers) {
     route: routeReducer,
     global: globalReducer,
     login: loginReducer,
+    user: userReducer,
     ...injectedReducers,
   });
 }
