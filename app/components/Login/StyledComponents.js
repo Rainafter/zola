@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { white, mediumBlue1, mediumBlue2, mediaBlue3 } from '../common/Colors';
+import { white, mediumBlue1, mediumBlue2, mediumBlue3 } from '../common/Colors';
 
 export const LoginInputWrapper = styled.div`
   position: relative;
   input:focus{
     border-color: ${mediumBlue1};
-    box-shadow: 0 3px 10px ${mediaBlue3};
+    box-shadow: 0 3px 10px ${mediumBlue3};
     outline: 0 none;
   }
 `;
@@ -56,4 +56,14 @@ export const ZolaLogo = styled.img`
   height: 100px;
   width: 100%;
   opacity: .8;
+`;
+
+export const LoginStatusWrapper = styled.div`
+  background: ${mediumBlue3};
+  top: 50%;
+  margin: 30px auto 0;
+  text-align: center;
+  width: 400px;
+  padding: 20px 0;
+
 `;

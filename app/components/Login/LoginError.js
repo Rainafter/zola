@@ -1,5 +1,5 @@
 import React from 'react';
-
-const LoginError = () => <div> Login Denailed!</div>;
+import { LoginStatusWrapper } from './StyledComponents';
+const LoginError = () => <LoginStatusWrapper> Login Denailed!</LoginStatusWrapper>;
 
 export default LoginError;

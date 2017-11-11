@@ -13,7 +13,6 @@ import injectReducer from '../../utils/injectReducer';
 import reducer from './reducer';
 
 import Main from './Main';
-
 const withConnect = connect(null, null);
 const withReducer = injectReducer({ key: 'login', reducer });
 // const withSaga = injectSaga({ key: 'login', saga });

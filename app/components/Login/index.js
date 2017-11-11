@@ -11,7 +11,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchLoginSuccess: () => dispatch(loginSuccess({ name: 'ZOLA CLIENT' })),
-  dispatchLoginError: () => dispatch(loginError('Email/Password does not match our record!')),
+  dispatchLoginError: () => dispatch(loginError()),
   dispatchClearLoginError: () => dispatch(clearLoginError()),
 });
 
