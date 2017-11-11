@@ -35,7 +35,7 @@ export default function App() {
       </Helmet>
       <Switch>
         <Route exact path="/" component={LoginPage} />
-        <Route path="/user" component={UserPage} />
+        <Route exact path="/user" component={UserPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
     </AppWrapper>

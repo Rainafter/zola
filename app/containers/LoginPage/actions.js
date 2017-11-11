@@ -11,10 +11,9 @@ export function loginSuccess(user) {
   };
 }
 
-export function loginError(err) {
+export function loginError() {
   return {
     type: LOGIN_ERROR,
-    err,
   };
 }
 

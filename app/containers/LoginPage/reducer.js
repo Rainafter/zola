@@ -14,7 +14,7 @@ function loginReducer(state = initialState, action) {
       return state.set('user', action.user)
         .set('status', 'Authorized');
     case LOGIN_ERROR:
-      return state.set('status', action.err);
+      return state.set('status', 'Unauthorized');
     case CLEAR_LOGIN_ERROR:
       return state.set('status', '');
     default:
