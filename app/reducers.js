@@ -7,7 +7,7 @@ import { combineReducers } from 'redux-immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
 import globalReducer from 'containers/App/reducer';
-// import loginReducer from 'containers/LoginPage/reducer';
+import loginReducer from 'containers/LoginPage/reducer';
 /*
  * routeReducer
  *
@@ -43,7 +43,7 @@ export default function createReducer(injectedReducers) {
   return combineReducers({
     route: routeReducer,
     global: globalReducer,
-    // login: loginReducer,
+    login: loginReducer,
     ...injectedReducers,
   });
 }

@@ -19,10 +19,6 @@ import {
 const initialState = fromJS({
   loading: false,
   error: false,
-  currentUser: false,
-  userData: {
-    repositories: false,
-  },
 });
 
 function appReducer(state = initialState, action) {
@@ -30,8 +26,7 @@ function appReducer(state = initialState, action) {
     case LOAD_DATA:
       return state
         .set('loading', true)
-        .set('error', false)
-        .setIn(['userData', 'repositories'], false);
+        .set('error', false);
     default:
       return state;
   }

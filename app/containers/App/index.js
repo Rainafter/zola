@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
 import LoginPage from '../LoginPage/Loadable';
+import UserPage from '../UserPage/Loadable';
 import NotFoundPage from '../NotFoundPage/Loadable';
 
 const AppWrapper = styled.div`
@@ -34,6 +35,7 @@ export default function App() {
       </Helmet>
       <Switch>
         <Route exact path="/" component={LoginPage} />
+        <Route path="/user" component={UserPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
     </AppWrapper>
