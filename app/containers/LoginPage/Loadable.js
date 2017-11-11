@@ -1,5 +1,5 @@
 /**
- * Asynchronously loads the component for NotFoundPage
+ * Asynchronously loads the component for LoginPage
  */
 import Loadable from 'react-loadable';
 
