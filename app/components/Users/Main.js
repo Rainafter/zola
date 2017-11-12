@@ -22,11 +22,13 @@ class Main extends React.Component {
     this.setState({ users });
   }
   render() {
+    const { selectedCatetory } = this.props;
+    const { users } = this.state;
     return (
       <div>
         { mockData.map(
           (item, index) => {
-            return <User key={`${item.name}-${index}`} target={item} />;
+            return (users[index].name === selectedCatetory) && <User key={`${item.name}-${index}`} target={item} />;
           }
         )}
       </div>

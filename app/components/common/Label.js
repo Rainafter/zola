@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 export const Label = styled.label`
   font-family: Arial;
-  display: block;
-  padding: 5px 0px;
+  display: inline-block;
+  padding: ${({ padding }) => padding};
   margin: 0;
   font-weight: 600;
   font-size: 14px;
@@ -13,9 +13,9 @@ export const Label = styled.label`
   font-size: ${({ fontsize }) => fontsize};
 `;
 
-const StyledLabel = ({ label, color, width, fontsize, className }) => {
+const StyledLabel = ({ label, color, width, fontsize, className, padding }) => {
   return (
-    <Label color={color} width={width} fontsize={fontsize} className={className}>{label}</Label>
+    <Label color={color} width={width} padding={padding} fontsize={fontsize} className={className}>{label}</Label>
   );
 };
 
@@ -24,6 +24,7 @@ StyledLabel.propTypes = {
   color: PropTypes.string,
   width: PropTypes.string,
   fontsize: PropTypes.string,
+  padding: PropTypes.string,
   className: PropTypes.string,
 };
 
