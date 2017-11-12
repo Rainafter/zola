@@ -1,34 +1,32 @@
 import React, { PropTypes } from 'react';
 import mockData from './mockData';
 import User from './User';
-
+// import { sortByName } from '../../utils/helpers';
 
 class Main extends React.Component {
   constructor() {
     super();
     this.state = {
-      users: [],  // {name: cat3, checked: false}
+      users: [], // category: '' age: '', name: '', priority: '', checked: false
     };
   }
   componentWillMount() {
     this.populateUser();
   }
   populateUser() {
-    const users = [];
-    mockData.map((item) => {
-      users.push({ name: item.category, checked: false });
-      return users;
+    const users = mockData.map((item) => {
+      return { category: item.category, age: item.age, name: item.name, priority: item.priority, checked: false };
     });
     this.setState({ users });
   }
   render() {
-    const { selectedCatetory } = this.props;
     const { users } = this.state;
+    const { selectedCatetory } = this.props;
     return (
       <div>
-        { mockData.map(
+        { users.map(
           (item, index) => {
-            return (users[index].name === selectedCatetory) && <User key={`${item.name}-${index}`} target={item} />;
+            return (item.category === selectedCatetory) && <User key={`${item.name}-${index}`} target={item} />;
           }
         )}
       </div>

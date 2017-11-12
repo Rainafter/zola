@@ -1,25 +1,20 @@
 /*
  * UserPage
  *
- * List all the features
  */
-import React from 'react';
-import Users from '../../components/Users';
-import FilterPanel from '../../components/FilterPanel';
 
-class UserPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import injectReducer from 'utils/injectReducer';
 
-  shouldComponentUpdate() {
-    return false;
-  }
+import reducer from './reducer';
+import Main from './Main';
 
-  render() {
-    return (
-      <div>
-        <FilterPanel />
-        <Users />
-      </div>
-    );
-  }
-}
-export default UserPage;
+const withConnect = connect(null, null);
+const withReducer = injectReducer({ key: 'user', reducer });
+
+
+export default compose(
+  withReducer,
+  withConnect,
+)(Main);

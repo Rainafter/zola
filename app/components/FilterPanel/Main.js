@@ -1,22 +1,34 @@
 import React, { PropTypes } from 'react';
-import mockData from '../Users/mockData';
+import 'react-select/dist/react-select.css';
 import Radio from '../common/Radio';
+import { sortTypes } from './DataConfig';
+import { StyledSelect, Inline } from './StyledComponents';
+import mockData from '../Users/mockData';
+// import { sortByName } from '../../utils/helpers';
 
 class Main extends React.Component {
   constructor() {
     super();
     this.state = {
       categories: [],  // cat1, cat2, cat3
-      selectedIdx: 0,  // 0, 1, 2
+      selectCategoryIdx: 0,  // 0, 1, 2
+      selectSort: '',
+      users: [], // original data
     };
   }
   componentWillMount() {
-    this.populateCategory(mockData);
-    this.props.dispatchSetCategory(mockData[0].category);
+    this.setState({ users: mockData }, () => {
+      this.populateCategory();
+      this.props.dispatchSetCategory(this.state.users[0].category);
+    });
+  }
+  onSelect = (e) => {
+    this.setState({ selectSort: e });
   }
   populateCategory = () => {
+    const { users } = this.state;
     const categories = [];
-    mockData.map((item) => {
+    users.map((item) => {
       if (categories.indexOf(item.category) === -1) categories.push(item.category);
       return categories;
     });
@@ -25,19 +37,31 @@ class Main extends React.Component {
   toggleCheckBox = (e) => {
     const { categories } = this.state;
     this.setState({
-      selectedIdx: categories.indexOf(e.target.value),
+      selectCategoryIdx: categories.indexOf(e.target.value),
     });
     this.props.dispatchSetCategory(e.target.value); // set reducer selectedCatetory = 'cat1' or 'cat2' or 'cat3' to filter display of users
   }
   render() {
-    const { categories, selectedIdx } = this.state;
+    const { categories, selectCategoryIdx, selectSort } = this.state;
+    // console.log('render~~~~~~~~~~>this.props', this.props);
     return (
       <div>
         {
           categories.map((cat, index) => {
-            return <Radio name="category" value={cat} onClick={this.toggleCheckBox} index={index} checked={selectedIdx === index} />;
+            return <Radio name="category" value={cat} onChange={this.toggleCheckBox} index={index} checked={selectCategoryIdx === index} />;
           })
         }
+        <Inline>
+          <StyledSelect
+            name="sort"
+            placeholder="Feature - No sort"
+            className="select-style"
+            value={selectSort}
+            options={sortTypes}
+            onChange={this.onSelect}
+            autosize
+          />
+        </Inline>
       </div>
     );
   }

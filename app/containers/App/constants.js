@@ -9,5 +9,8 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
- export const LOAD_DATA = 'LOAD_DATA';
  export const DEFAULT_LOCALE = 'en';
+ export const GET_USER = 'GET_USER';
+ export const GET_USER_FAIL = 'GET_USER_FAIL';
+ export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+
