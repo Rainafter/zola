@@ -8,6 +8,7 @@ const selectSelectedCategory = () => createSelector(
   (userState) => userState.get('selectedCatetory')
 );
 
+
 export {
   selectSelectedCategory,
 };

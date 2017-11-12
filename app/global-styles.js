@@ -27,4 +27,15 @@ injectGlobal`
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
   }
+  /* React Select */
+  .select-style {
+    font-size: 11px;
+    .Select-control{
+      border: 1px solid #fff;
+      &:focus {
+        border: 1px solid #fff;
+      }
+    }
+  }
+
 `;

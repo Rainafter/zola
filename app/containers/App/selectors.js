@@ -13,7 +13,13 @@ const makeSelectLocation = () => createSelector(
   (routeState) => routeState.get('location').toJS()
 );
 
+const selectUsers = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.get('usersData').toJS(),
+);
+
 export {
   selectGlobal,
   makeSelectLocation,
+  selectUsers,
 };

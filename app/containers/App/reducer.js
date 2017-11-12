@@ -1,32 +1,20 @@
-/*
- * AppReducer
- *
- * The reducer takes care of our data. Using actions, we can change our
- * application state.
- * To add a new action, add it to the switch statement in the reducer function
- *
- * Example:
- * case YOUR_ACTION_CONSTANT:
- *   return state.set('yourStateVariable', true);
- */
-
 import { fromJS } from 'immutable';
 import {
-  LOAD_DATA,
+  GET_USER_SUCCESS,
+  GET_USER_FAIL,
 } from './constants';
 
 // The initial state of the App
 const initialState = fromJS({
-  loading: false,
-  error: false,
+  usersData: {},
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_DATA:
-      return state
-        .set('loading', true)
-        .set('error', false);
+    case GET_USER_SUCCESS:
+      return state.set('usersData', fromJS(action.value));
+    case GET_USER_FAIL:
+      return state.set('usersData', fromJS(action.value)); // Note: Set state same as GET_USER_SUCCESS only because there's no real endpoint, so using this event to use mockData
     default:
       return state;
   }

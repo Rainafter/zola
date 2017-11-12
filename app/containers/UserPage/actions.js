@@ -1,4 +1,6 @@
-import { SET_CATEGORY } from './constants';
+import {
+  SET_CATEGORY,
+} from './constants';
 
 export function setCategory(category) {
   return {

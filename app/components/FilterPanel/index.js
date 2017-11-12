@@ -1,9 +1,16 @@
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import Main from './Main';
 import { setCategory } from '../../containers/UserPage/actions';
+import { selectUsers } from '../../containers/App/selectors';
+
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchSetCategory: (value) => dispatch(setCategory(value)),
 });
 
-export default connect(null, mapDispatchToProps)(Main);
+const mapStateToProps = () => createStructuredSelector({
+  users: selectUsers(),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

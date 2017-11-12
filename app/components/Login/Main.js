@@ -18,7 +18,6 @@ class Main extends React.Component {
     evt.preventDefault();
     evt.persist();
     const { email, password } = evt.target;
-    // const { history } = this.props;
     this.clearLoginError();
     // sets in motion saga which does the actual pinging of DB
     const emailWarning = (!isValidEmail(email.value)) ? 'Invalid Email' : '';
@@ -30,6 +29,7 @@ class Main extends React.Component {
       if (this.checkAuthetication(email.value, password.value)) {
         localStorage.setItem('token', Math.floor(Math.random() * 99999999999999));
         this.props.dispatchLoginSuccess();
+        this.props.dispatchGetUser();
       } else {
         this.props.dispatchLoginError();
       }
@@ -92,6 +92,7 @@ Main.propTypes = {
   dispatchClearLoginError: PropTypes.func.isRequired,
   dispatchLoginSuccess: PropTypes.func,
   dispatchLoginError: PropTypes.func,
+  dispatchGetUser: PropTypes.func,
 };
 
 export default Main;
