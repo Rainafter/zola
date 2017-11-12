@@ -4,7 +4,8 @@
  * List all the features
  */
 import React from 'react';
-import Users from '../../components/Users/';
+import Users from '../../components/Users';
+import FilterPanel from '../../components/FilterPanel';
 
 class UserPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -15,6 +16,7 @@ class UserPage extends React.Component { // eslint-disable-line react/prefer-sta
   render() {
     return (
       <div>
+        <FilterPanel />
         <Users />
       </div>
     );
