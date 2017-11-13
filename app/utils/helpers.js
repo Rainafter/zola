@@ -23,3 +23,9 @@ export const sortByName = (a, b) => {
   else if (a.name > b.name) return 1;
   return 0;
 };
+
+export const sortByPriority = (a, b) => {
+  if (a.priority < b.priority) return -1;
+  else if (a.priority > b.priority) return 1;
+  return 0;
+};

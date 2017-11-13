@@ -13,7 +13,7 @@ const Radio = (props) => {
   return (
     <RadioContainer>
       <Label label={value} padding="0 8px" fontsize="11px" />
-      <input key={`${name}-${value}-${index}`} label="ss" type="radio" name={name} value={value} checked={checked} onChange={onChange} />
+      <input key={`${name}-${value}-${index}`} type="radio" name={name} value={value} checked={checked} onChange={onChange} />
     </RadioContainer>
   );
 };
@@ -23,7 +23,7 @@ Radio.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   index: PropTypes.number,
-  checked: PropTypes.book,
+  checked: PropTypes.bool,
 };
 
 export default Radio;

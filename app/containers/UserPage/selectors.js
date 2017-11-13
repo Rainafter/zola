@@ -8,7 +8,13 @@ const selectSelectedCategory = () => createSelector(
   (userState) => userState.get('selectedCatetory')
 );
 
+const selectSortType = () => createSelector(
+  selectUserDomain(),
+  (userState) => userState.get('sortType')
+);
+
 
 export {
   selectSelectedCategory,
+  selectSortType,
 };

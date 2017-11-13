@@ -1,5 +1,5 @@
 import 'whatwg-fetch';
-
+import assign from 'lodash/assign';
 /**
  * Parses the JSON returned by a network request
  *
@@ -43,4 +43,19 @@ export default function request(url, options) {
   return fetch(url, options)
     .then(checkStatus)
     .then(parseJSON);
+}
+
+export function fakeGetUserPost(options) {
+  return new Promise((resolve, reject) => {
+    if (options.error) reject(options.error);
+    else {
+      setTimeout(() => {
+        resolve({
+          message: 'POST Successful',
+          code: 201,
+          created: assign({}, options, { id: Math.floor(Math.random() * 1000) }),
+        });
+      }, 250);
+    }
+  });
 }
