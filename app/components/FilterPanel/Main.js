@@ -4,7 +4,6 @@ import Radio from '../common/Radio';
 import { sortTypes } from './DataConfig';
 import { StyledSelect, Inline } from './StyledComponents';
 import mockData from '../Users/mockData';
-// import { sortByName } from '../../utils/helpers';
 
 class Main extends React.Component {
   constructor() {
@@ -24,6 +23,7 @@ class Main extends React.Component {
   }
   onSelect = (e) => {
     this.setState({ selectSort: e });
+    this.props.dispatchSetSort(e.value);
   }
   populateCategory = () => {
     const { users } = this.state;
@@ -43,7 +43,6 @@ class Main extends React.Component {
   }
   render() {
     const { categories, selectCategoryIdx, selectSort } = this.state;
-    // console.log('render~~~~~~~~~~>this.props', this.props);
     return (
       <div>
         {
@@ -69,6 +68,7 @@ class Main extends React.Component {
 
 Main.propTypes = {
   dispatchSetCategory: PropTypes.func,
+  dispatchSetSort: PropTypes.func,
 };
 
 export default Main;

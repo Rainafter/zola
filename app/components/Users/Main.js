@@ -1,41 +1,47 @@
 import React, { PropTypes } from 'react';
 import mockData from './mockData';
 import User from './User';
-// import { sortByName } from '../../utils/helpers';
-
+import { sortByName, sortByPriority } from '../../utils/helpers';
+import { Row } from '../common/Grid';
 class Main extends React.Component {
   constructor() {
     super();
     this.state = {
-      users: [], // category: '' age: '', name: '', priority: '', checked: false
+      users: [], // category: '' age: '', name: '', priority: ''
     };
   }
   componentWillMount() {
-    this.populateUser();
+    this.setState({ users: mockData });
   }
-  populateUser() {
-    const users = mockData.map((item) => {
-      return { category: item.category, age: item.age, name: item.name, priority: item.priority, checked: false };
-    });
-    this.setState({ users });
+  componentWillReceiveProps(nextProps) {
+    const { sortType } = nextProps;
+    const { users } = this.state;
+    if (sortType === 'Z - A') {
+      users.sort(sortByName).reverse();
+    } else if (sortType === 'A - Z') {
+      users.sort(sortByName);
+    } else if (sortType === 'Priority') {
+      users.sort(sortByPriority);
+    }
   }
   render() {
     const { users } = this.state;
     const { selectedCatetory } = this.props;
     return (
-      <div>
+      <Row>
         { users.map(
           (item, index) => {
             return (item.category === selectedCatetory) && <User key={`${item.name}-${index}`} target={item} />;
           }
         )}
-      </div>
+      </Row>
     );
   }
 }
 
 Main.propTypes = {
   selectedCatetory: PropTypes.string,
+  sortType: PropTypes.string,
 };
 
 export default Main;
